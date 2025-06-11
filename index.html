@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thiru ❤️ Manju</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      color: white;
+      text-align: center;
+      flex-direction: column;
+      animation: gradientMove 15s ease infinite;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .countdown {
+      font-size: 2.5rem;
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .countdown div {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .countdown span {
+      display: block;
+      font-size: 1rem;
+      margin-top: 0.5rem;
+      color: #fff9;
+    }
+
+    @keyframes gradientMove {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Thiru ❤️ Manju</h1>
+  <h1>Countdown to August 29, 2025 – 7:30 AM</h1>
+  <div class="countdown" id="countdown">
+    <div><span id="days">--</span><span>Days</span></div>
+    <div><span id="hours">--</span><span>Hours</span></div>
+    <div><span id="minutes">--</span><span>Minutes</span></div>
+    <div><span id="seconds">--</span><span>Seconds</span></div>
+  </div>
+
+  <script>
+    const countdown = () => {
+      const endDate = new Date('August 29, 2025 07:30:00').getTime();
+      const now = new Date().getTime();
+      const diff = endDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('countdown').innerHTML = '<div><strong>The time has arrived!</strong></div>';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+      document.getElementById('days').innerText = days;
+      document.getElementById('hours').innerText = hours;
+      document.getElementById('minutes').innerText = minutes;
+      document.getElementById('seconds').innerText = seconds;
+    };
+
+    countdown();
+    setInterval(countdown, 1000);
+  </script>
+</body>
+</html>
